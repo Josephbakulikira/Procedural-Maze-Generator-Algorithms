@@ -13,13 +13,15 @@ screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 30
 
-cell_size = 40
+cell_size = 20
 rows = height//cell_size
 cols = width//cell_size
 
 binary_tree = BinaryTree(Grid(rows, cols, cell_size))
 side_winder = SideWinder(Grid(rows, cols, cell_size))
 
+show_text = False
+show_path = True
 run = True
 while run:
     #screen.fill(black)
@@ -36,8 +38,12 @@ while run:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 run = False
+            if event.key == pygame.K_h:
+                show_text = not show_text
+            if event.key == pygame.K_p:
+                show_path = not show_path
 
-    # binary_tree.Generate(screen)
-    side_winder.Generate(screen)
+    binary_tree.Generate(screen, show_text, show_path)
+    # side_winder.Generate(screen, show_text, show_path)
 
 pygame.quit()

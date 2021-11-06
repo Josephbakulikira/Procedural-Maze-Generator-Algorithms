@@ -8,6 +8,7 @@ class Grid:
         # Initialize cells
         self.cells = [[Cell(x, y, cell_size) for y in range(rows)] for x in range(cols)]
         self.UpdateNeighbours()
+        self.heuristics = None
 
     def UpdateNeighbours(self):
         for x in range(self.cols):
@@ -25,7 +26,9 @@ class Grid:
                 if y+1 < self.rows:
                     self.cells[x][y].South = self.cells[x][y+1]
 
-    def Deconnect(A, B):
+    def JoinAndDestroyWalls(A, B):
+        A.connections.append(B)
+        B.connections.append(A)
         if A.North == B:
             A.North, B.South = None, None
         elif A.South == B:
@@ -35,7 +38,9 @@ class Grid:
         else:
             A.West, B.East = None, None
 
-    def Show(self, screen):
+    def Show(self, screen, show_heuristic, show_path):
         for x in range(self.cols):
             for y in range(self.rows):
+                self.cells[x][y].show_text = show_heuristic
+                self.cells[x][y].show_path = show_path
                 self.cells[x][y].Draw(screen, self.rows, self.cols)
