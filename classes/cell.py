@@ -67,7 +67,7 @@ class Cell:
         elif self.isgoalNode:
             color = blue
         elif self.isPath and self.show_path:
-            color = purple
+            color = navy_blue
         pygame.draw.rect(screen, color, [x, y, self.size-offset, self.size-offset])
 
 

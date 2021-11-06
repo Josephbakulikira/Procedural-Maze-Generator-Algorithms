@@ -13,7 +13,7 @@ screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 30
 
-cell_size = 20
+cell_size = 50
 rows = height//cell_size
 cols = width//cell_size
 
@@ -43,7 +43,7 @@ while run:
             if event.key == pygame.K_p:
                 show_path = not show_path
 
-    binary_tree.Generate(screen, show_text, show_path)
-    # side_winder.Generate(screen, show_text, show_path)
+    # binary_tree.Generate(screen, show_text, show_path)
+    side_winder.Generate(screen, show_text, show_path)
 
 pygame.quit()

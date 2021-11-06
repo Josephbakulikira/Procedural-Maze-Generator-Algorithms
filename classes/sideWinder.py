@@ -26,7 +26,7 @@ class SideWinder:
 
                     at_eastern_edge = False
                     at_northern_edge = False
-                    
+
                     if current.East == None:
                         at_eastern_edge = True
                     if current.North == None:
@@ -55,13 +55,12 @@ class SideWinder:
                 for y in range(self.grid.rows):
                     self.grid.cells[x][y].cost = 0 if self.grid.heuristics.cells_record[x][y] == None else self.grid.heuristics.cells_record[x][y]
             # get the path from the goad node to the starting node
-            path = h_distances.BacktrackPath(self.end_node, self.starting_node)
+            shortest_path = h_distances.BacktrackPath(self.end_node, self.starting_node)
             for x in range(self.grid.cols):
                 for y in range(self.grid.rows):
                     # check if the cell is in the path grid
                     # If it is then set it as path
-                    if path.GetRecord(self.grid.cells[
-                    if path.GetRecord(self.grid.cells[x][y]):
+                    if shortest_path.GetRecord(self.grid.cells[x][y]):
                         self.grid.cells[x][y].isPath = True
 
         self.grid.Show(screen, show_heuristic, show_path)

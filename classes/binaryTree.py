@@ -42,12 +42,12 @@ class BinaryTree:
             self.grid.heuristics = h_distances
 
             # get the path from the goad node to the starting node
-            path = h_distances.BacktrackPath(self.end_node, self.starting_node)
+            shortest_path = h_distances.BacktrackPath(self.end_node, self.starting_node)
             for x in range(self.grid.cols):
                 for y in range(self.grid.rows):
                     # check if the cell is in the path grid
                     # If it is then set it as path
-                    if path.GetRecord(self.grid.cells[x][y]):
+                    if shortest_path.GetRecord(self.grid.cells[x][y]):
                         self.grid.cells[x][y].isPath = True
 
         self.grid.Show(screen, show_heuristic, show_path)

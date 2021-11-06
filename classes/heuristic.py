@@ -7,6 +7,19 @@ class Heuristic:
     def SetRecord(self, cell, distance):
         self.cells_record[cell.x][cell.y] = distance
 
+    def GetFarthest(self, goal, start, grid):
+        max_distance = 0
+        farthest= start
+        for x in range(self.cols):
+            for y in range(self.rows):
+                dist = self.cells_record[x][y]
+                cell = self.grid.cells[x][y]
+                if dist > max_distance:
+                    farthest = cell
+                    max_distance = dist
+
+        return farthest, max_distance
+
     def BacktrackPath(self, goal, start):
         current = goal
         path_track = Heuristic(self.rows, self.cols)
