@@ -21,7 +21,8 @@ binary_tree = BinaryTree(Grid(rows, cols, cell_size))
 side_winder = SideWinder(Grid(rows, cols, cell_size))
 
 show_text = False
-show_path = True
+show_color_map = True
+
 run = True
 while run:
     #screen.fill(black)
@@ -38,12 +39,12 @@ while run:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 run = False
-            if event.key == pygame.K_h:
+            elif event.key == pygame.K_h:
                 show_text = not show_text
-            if event.key == pygame.K_p:
-                show_path = not show_path
+            elif event.key == pygame.K_SPACE:
+                show_color_map = not show_color_map
 
-    # binary_tree.Generate(screen, show_text, show_path)
-    side_winder.Generate(screen, show_text, show_path)
+    binary_tree.Generate(screen, show_text, show_color_map)
+    # side_winder.Generate(screen, show_text, show_color_map)
 
 pygame.quit()

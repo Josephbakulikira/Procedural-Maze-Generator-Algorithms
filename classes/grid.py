@@ -38,9 +38,9 @@ class Grid:
         else:
             A.West, B.East = None, None
 
-    def Show(self, screen, show_heuristic, show_path):
+    def Show(self, screen, show_heuristic, show_color_map):
         for x in range(self.cols):
             for y in range(self.rows):
                 self.cells[x][y].show_text = show_heuristic
-                self.cells[x][y].show_path = show_path
+                self.cells[x][y].show_highlight = show_color_map
                 self.cells[x][y].Draw(screen, self.rows, self.cols)

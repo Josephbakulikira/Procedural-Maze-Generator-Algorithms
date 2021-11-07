@@ -4,7 +4,7 @@ from classes.heuristic import Heuristic
 
 pygame.font.init()
 cell_size = 100
-text_font = pygame.font.SysFont("Arial", cell_size//4)
+text_font = pygame.font.SysFont("Arial", cell_size//5)
 offset = 0
 
 class Cell:
@@ -17,7 +17,9 @@ class Cell:
         self.isStartingNode = False
         self.isPath = False
         self.show_path = False
+        self.highlight = white
 
+        self.show_highlight = False
         self.size = size
         self.color= white
         self.wall_color= black
@@ -66,10 +68,10 @@ class Cell:
             color = yellow
         elif self.isgoalNode:
             color = blue
-        elif self.isPath and self.show_path:
-            color = navy_blue
         pygame.draw.rect(screen, color, [x, y, self.size-offset, self.size-offset])
 
+        if self.show_highlight:
+            pygame.draw.rect(screen, self.highlight, [x, y, self.size-offset, self.size-offset])
 
         if self.North != None or self.y - 1 < 0:
             A = (x, y)

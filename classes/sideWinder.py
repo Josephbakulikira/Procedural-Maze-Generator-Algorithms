@@ -1,5 +1,6 @@
 import pygame
 from classes.grid import Grid
+from classes.color import GridColor
 from ui.colors import *
 import random
 import time
@@ -16,7 +17,7 @@ class SideWinder:
         self.max_speed = 1
         self.show_path = True
 
-    def Generate(self, screen, show_heuristic, show_path):
+    def Generate(self, screen, show_heuristic, show_color_map):
         if not self.isDone:
             for y in range(self.grid.rows):
                 history = []
@@ -40,7 +41,8 @@ class SideWinder:
                     else:
                         Grid.JoinAndDestroyWalls(current, current.East)
 
-                    self.grid.Show(screen, show_heuristic, show_path)
+                    self.grid.Show(screen, show_heuristic,show_color_map)
+
                     pygame.display.flip()
                     if self.speed < 1:
                         time.sleep(self.max_speed - min(self.speed, self.max_speed))
@@ -54,6 +56,7 @@ class SideWinder:
             for x in range(self.grid.cols):
                 for y in range(self.grid.rows):
                     self.grid.cells[x][y].cost = 0 if self.grid.heuristics.cells_record[x][y] == None else self.grid.heuristics.cells_record[x][y]
+
             # get the path from the goad node to the starting node
             shortest_path = h_distances.BacktrackPath(self.end_node, self.starting_node)
             for x in range(self.grid.cols):
@@ -63,5 +66,18 @@ class SideWinder:
                     if shortest_path.GetRecord(self.grid.cells[x][y]):
                         self.grid.cells[x][y].isPath = True
 
-        self.grid.Show(screen, show_heuristic, show_path)
+            colorGridShortestPath = GridColor("RED")
+            colorGridShortestPath.distances(shortest_path, self.end_node, self.starting_node, self.grid)
+
+            temp_path = h_distances.Merge(shortest_path)
+
+            colorGridMap = GridColor("YELLOW")
+            colorGridMap.distances(temp_path, self.end_node, self.starting_node, self.grid)
+
+            for x in range(self.grid.cols):
+                for y in range(self.grid.rows):
+                    self.grid.cells[x][y].highlight = colorGridShortestPath.UpdateColor(self.grid.cells[x][y])
+                    self.grid.cells[x][y].color = colorGridMap.UpdateColor(self.grid.cells[x][y])
+
+        self.grid.Show(screen, show_heuristic, show_color_map)
         pygame.display.flip()
