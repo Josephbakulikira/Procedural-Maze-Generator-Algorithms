@@ -15,6 +15,7 @@ class Cell:
         self.cost = 0
         self.isgoalNode = False
         self.isStartingNode = False
+        self.isCurrent = False
         self.isPath = False
         self.show_path = False
         self.highlight = white
@@ -64,15 +65,20 @@ class Cell:
         x = self.x * self.size
         y = self.y * self.size
 
-        color = self.color
-        if self.isStartingNode:
-            color = yellow
-        elif self.isgoalNode:
-            color = blue
-        pygame.draw.rect(screen, color, [x, y, self.size-offset, self.size-offset])
+        if not self.visited:
+            pygame.draw.rect(screen, black, [x, y, self.size-offset, self.size-offset])
+        else:
+            color = self.color
+            if self.isStartingNode:
+                color = yellow
+            if self.isCurrent:
+                color = navy_blue
+            elif self.isgoalNode:
+                color = blue
+            pygame.draw.rect(screen, color, [x, y, self.size-offset, self.size-offset])
 
-        if self.show_highlight:
-            pygame.draw.rect(screen, self.highlight, [x, y, self.size-offset, self.size-offset])
+            if self.show_highlight:
+                pygame.draw.rect(screen, self.highlight, [x, y, self.size-offset, self.size-offset])
 
         if self.North != None or self.y - 1 < 0:
             A = (x, y)

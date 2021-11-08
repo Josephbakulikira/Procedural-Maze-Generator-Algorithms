@@ -1,6 +1,6 @@
 from classes.cell import *
 from ui.colors import *
-
+from classes.color import GridColor
 class Grid:
     def __init__(self, rows, cols, cell_size):
         self.rows = rows
@@ -11,6 +11,13 @@ class Grid:
         self.UpdateNeighbours()
         self.heuristics = None
         self.path_color = orange
+
+    def Flatten(self):
+        flat_grid = []
+        for x in range(self.cols):
+            for y in range(self.rows):
+                flat_grid.append(self.cells[x][y])
+        return flat_grid
 
     def UpdateNeighbours(self):
         for x in range(self.cols):
@@ -33,6 +40,8 @@ class Grid:
                     self.cells[x][y].neighbours.append(self.cells[x][y+1])
 
     def JoinAndDestroyWalls(A, B):
+        A.visited = True
+        B.visited = True
         A.connections.append(B)
         B.connections.append(A)
         if A.North == B:
@@ -54,3 +63,39 @@ class Grid:
                     if shortest_path.cells_record[x][y] != None:
                         A = ((x + 0.5) * self.cell_size, (y+0.5) * self.cell_size)
                         pygame.draw.circle(screen, self.path_color, A, self.cell_size//6)
+
+def Update(self, screen, show_heuristic, show_color_map, show_path):
+    # Calculate the step of each cell from the starting node
+    # it's gonna initialize a grid that store the cost of each cell
+    # from the starting node
+    h_distances = self.starting_node.CalculateHeuristic(self.grid.rows, self.grid.cols)
+    self.grid.heuristics = h_distances
+    for x in range(self.grid.cols):
+        for y in range(self.grid.rows):
+            self.grid.cells[x][y].cost = 0 if self.grid.heuristics.cells_record[x][y] == None else self.grid.heuristics.cells_record[x][y]
+
+    # get the path from the goad node to the starting node
+    shortest_path = h_distances.BacktrackPath(self.end_node, self.starting_node)
+    for x in range(self.grid.cols):
+        for y in range(self.grid.rows):
+            # check if the cell is in the path grid
+            # If it is then set it as path
+            if shortest_path.GetRecord(self.grid.cells[x][y]):
+                self.grid.cells[x][y].isPath = True
+
+    colorGridShortestPath = GridColor(self.path_color)
+    colorGridShortestPath.distances(shortest_path, self.end_node, self.starting_node, self.grid)
+
+    temp_path = h_distances.Merge(shortest_path)
+
+    colorGridMap = GridColor(self.path_color)
+    colorGridMap.distances(temp_path, self.end_node, self.starting_node, self.grid)
+
+    for x in range(self.grid.cols):
+        for y in range(self.grid.rows):
+            self.grid.cells[x][y].highlight = colorGridShortestPath.UpdateColor(self.grid.cells[x][y])
+            self.grid.cells[x][y].color = colorGridMap.UpdateColor(self.grid.cells[x][y])
+
+            self.grid.Show(screen, show_heuristic, show_color_map)
+            pygame.display.flip()
+    self.shortest_path = shortest_path

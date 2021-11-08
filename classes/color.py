@@ -31,6 +31,8 @@ class GridColor:
                 "GREEN":  (dark, bright, dark),
                 "YELLOW": (bright, bright, dark),
                 "CYAN":   (dark, bright, bright),
+                "PURPLE":   (bright, dark, bright),
+                "PURPLE_E": (bright, dark, bright),
                 "GREEN_E":(0, bright, 0),
                 "BLUE_E": (0, 0, bright),
                 "RED_E":  (bright, 0, 0)
