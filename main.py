@@ -2,6 +2,7 @@ import pygame
 from ui.colors import *
 from classes.binaryTree import BinaryTree
 from classes.sideWinder import SideWinder
+from classes.aldousBroder import AldousBroder
 from classes.grid import Grid
 
 width, height = 1000, 800
@@ -17,11 +18,13 @@ cell_size = 50
 rows = height//cell_size
 cols = width//cell_size
 
-binary_tree = BinaryTree(Grid(rows, cols, cell_size))
-side_winder = SideWinder(Grid(rows, cols, cell_size))
+binary_tree = BinaryTree(Grid(rows, cols, cell_size), "HSV")
+side_winder = SideWinder(Grid(rows, cols, cell_size), "BLUE")
+aldous_broder = AldousBroder(Grid(rows, cols, cell_size), "GREEN")
 
 show_text = False
-show_color_map = True
+color_mode = False
+show_path = False
 
 run = True
 while run:
@@ -42,9 +45,12 @@ while run:
             elif event.key == pygame.K_h:
                 show_text = not show_text
             elif event.key == pygame.K_SPACE:
-                show_color_map = not show_color_map
+                color_mode = not color_mode
+            elif event.key == pygame.K_s:
+                show_path = not show_path
 
-    binary_tree.Generate(screen, show_text, show_color_map)
-    # side_winder.Generate(screen, show_text, show_color_map)
+    binary_tree.Generate(screen, show_text, color_mode, show_path)
+    # side_winder.Generate(screen, show_text, color_mode, show_path)
+    # aldous_broder.Generate(screen, show_text, color_mode, show_path)
 
 pygame.quit()

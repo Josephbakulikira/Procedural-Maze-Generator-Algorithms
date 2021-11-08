@@ -26,6 +26,7 @@ class Cell:
         self.wall_thickness = 4
         self.visited = False
         self.connections = []
+        self.neighbours = []
         # Walls -- neighbours
         self.North = None
         self.South = None

@@ -25,7 +25,7 @@ class Heuristic:
         for x in range(self.cols):
             for y in range(self.rows):
                 if other.cells_record[x][y] != None:
-                    new_distances.cells_record[x][y] = 0
+                    new_distances.cells_record[x][y] = other.cells_record[x][y]
                 else:
                     new_distances.cells_record[x][y] = self.cells_record[x][y]
 

@@ -1,57 +1,43 @@
 import pygame
+import random
 from classes.grid import Grid
 from classes.color import GridColor
 from ui.colors import *
-import random
-import time
 
-class SideWinder:
-    def __init__(self, grid, path_color="RED"):
+class AldousBroder:
+    def __init__(self, grid, path_color="YELLOW"):
         self.grid = grid
-        self.starting_node = grid.cells[0][0]
-        self.starting_node.isStartingNode = True
-        self.end_node = grid.cells[self.grid.cols-1][self.grid.rows-1]
-        self.end_node.isgoalNode = True
+        self.starting_node = self.grid.cells[0][0]
+        self.end_node = self.grid.cells[grid.cols-1][grid.rows-1]
+        self.rows = grid.rows
+        self.cols = grid.cols
         self.isDone = False
-        self.speed = 1
-        self.max_speed = 1
-        self.show_path = True
-        self.path_color = path_color
         self.shortest_path = None
+        self.path_color = path_color
         if path_color == "HSV":
             self.grid.path_color = white
 
     def Generate(self, screen, show_heuristic, show_color_map, show_path):
         if not self.isDone:
-            for y in range(self.grid.rows):
-                history = []
-                for x in range(self.grid.cols):
-                    current = self.grid.cells[x][y]
-                    history.append(current)
+            randomX = random.randint(0, self.cols-1)
+            randomY = random.randint(0, self.rows-1)
+            current = self.grid.cells[randomX][randomY]
+            temp_color = current.color
+            unvisited = self.rows * self.cols - 1
 
-                    at_eastern_edge = False
-                    at_northern_edge = False
+            while unvisited > 0:
 
-                    if current.East == None:
-                        at_eastern_edge = True
-                    if current.North == None:
-                        at_northern_edge = True
+                neighbour = random.choice(current.neighbours)
+                if len(neighbour.connections) == 0:
+                    Grid.JoinAndDestroyWalls(current, neighbour)
+                    unvisited -= 1
 
-                    if at_eastern_edge or (at_northern_edge == False and random.randint(0, 1)==1):
-                        random_cell = random.choice(history)
-                        if random_cell.North:
-                            Grid.JoinAndDestroyWalls(random_cell, random_cell.North)
-                        history.clear()
-                    else:
-                        Grid.JoinAndDestroyWalls(current, current.East)
-
-                    self.grid.Show(screen, show_heuristic, show_color_map)
-
-                    pygame.display.flip()
-                    if self.speed < 1:
-                        time.sleep(self.max_speed - min(self.speed, self.max_speed))
+                current.color = navy_blue
+                self.grid.Show(screen, show_heuristic, show_color_map)
+                pygame.display.flip()
+                current.color = temp_color
+                current = neighbour
             self.isDone = True
-
             self.Update(screen, show_heuristic, show_color_map, show_path)
 
         if show_path:
