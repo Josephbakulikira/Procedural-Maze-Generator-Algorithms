@@ -35,6 +35,7 @@ show_path = False
 radius1 = 400
 radius2 = 350
 radius4 = 300
+pi = 3.1415925358
 
 run = True
 while run:
@@ -59,11 +60,12 @@ while run:
             elif event.key == pygame.K_s:
                 show_path = not show_path
 
-    # wilson.Generate(screen, show_text, color_mode, show_path)
+    wilson.Generate(screen, show_text, color_mode, show_path)
     # binary_tree.Generate(screen, show_text, color_mode, show_path)
     # side_winder.Generate(screen, show_text, color_mode, show_path)
     # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
     # aldous_broder.Generate(screen, show_text, color_mode, show_path)
     # recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
+
 
 pygame.quit()
