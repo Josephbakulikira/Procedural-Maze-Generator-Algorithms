@@ -4,7 +4,7 @@ from classes.heuristic import Heuristic
 from constants import *
 
 pygame.font.init()
-text_font = pygame.font.SysFont("Arial", cell_size//4)
+text_font = pygame.font.SysFont("Arial", cell_size//3)
 offset = 0
 
 class Cell:
