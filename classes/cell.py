@@ -1,10 +1,10 @@
 import pygame
 from ui.colors import *
 from classes.heuristic import Heuristic
+from constants import *
 
 pygame.font.init()
-cell_size = 100
-text_font = pygame.font.SysFont("Arial", cell_size//5)
+text_font = pygame.font.SysFont("Arial", cell_size//4)
 offset = 0
 
 class Cell:
@@ -28,6 +28,7 @@ class Cell:
         self.visited = False
         self.connections = []
         self.neighbours = []
+        self.isAvailable = True
         # Walls -- neighbours
         self.North = None
         self.South = None
@@ -65,7 +66,7 @@ class Cell:
         x = self.x * self.size
         y = self.y * self.size
 
-        if not self.visited:
+        if not self.visited or not self.isAvailable:
             pygame.draw.rect(screen, black, [x, y, self.size-offset, self.size-offset])
         else:
             color = self.color

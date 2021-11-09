@@ -1,5 +1,6 @@
 import pygame
 from classes.grid import Grid, Update
+from classes.mask import Mask, GridMask
 from ui.colors import *
 import random
 
@@ -10,10 +11,8 @@ class RecursiveBacktracker:
         self.cols = grid.cols
         self.path_color = path_color
         self.isDone = False
-        self.starting_node = grid.cells[0][0]
-        self.starting_node.isStartingNode = True
-        self.end_node = grid.cells[self.grid.cols-1][self.grid.rows-1]
-        self.end_node.isgoalNode = True
+        self.starting_node = grid.cells[self.cols//2][self.rows//2]
+        self.end_node = grid.cells[0][0]
         if path_color == "HSV":
             self.grid.path_color = white
         self.shortest_path = None
@@ -21,9 +20,13 @@ class RecursiveBacktracker:
     def Generate(self, screen, show_heuristic, show_color_map, show_path):
         if not self.isDone:
             stack = []
-            randomX = random.randint(0, self.cols-1)
-            randomY = random.randint(0, self.rows-1)
-            initial_cell = self.grid.cells[randomX][randomY]
+            initial_cell = None
+            if type(self.grid) == GridMask:
+                initial_cell = self.grid.GetRandomCell()
+            else:
+                randomX = random.randint(0, self.cols-1)
+                randomY = random.randint(0, self.rows-1)
+                initial_cell = self.grid.cells[randomX][randomY]
             stack.append(initial_cell)
 
             while len(stack) > 0:
@@ -36,8 +39,10 @@ class RecursiveBacktracker:
                     neighbour = random.choice(neighbours)
                     Grid.JoinAndDestroyWalls(current, neighbour)
                     neighbour.isCurrent = True
+
                     self.grid.Show(screen, show_heuristic, show_color_map)
                     pygame.display.flip()
+
                     neighbour.isCurrent = False
                     stack.append(neighbour)
             self.isDone = True
