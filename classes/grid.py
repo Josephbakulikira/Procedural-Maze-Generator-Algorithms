@@ -55,8 +55,20 @@ class Grid:
                 A.South, B.North = None, None
             elif A.East == B:
                 A.East, B.West = None, None
-            else:
+            elif A.West == B:
                 A.West, B.East = None, None
+            # ---- Polar Grid -------
+            elif A.inward == B:
+                A.inward = None
+            elif B in A.outward:
+                B.inward = None
+            elif A.clockwise == B:
+                A.clockwise, B.c_clockwise = None, None
+            elif A.c_clockwise == B:
+                A.c_clockwise = None
+                B.clockwise = None
+
+
 
     def Show(self, screen, show_heuristic, show_color_map, shortest_path = None):
         for x in range(self.cols):
@@ -76,8 +88,8 @@ def Update(self, screen, show_heuristic, show_color_map, show_path):
     # from the starting node
     h_distances = self.starting_node.CalculateHeuristic(self.grid.rows, self.grid.cols)
     self.grid.heuristics = h_distances
-    for x in range(self.grid.cols):
-        for y in range(self.grid.rows):
+    for x in range(len(self.grid.cells)):
+        for y in range(len(self.grid.cells[x])):
             if self.grid.cells[x][y]:
                 self.grid.cells[x][y].cost = 0 if self.grid.heuristics.cells_record[x][y] == None else self.grid.heuristics.cells_record[x][y]
 

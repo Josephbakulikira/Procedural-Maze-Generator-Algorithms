@@ -1,12 +1,7 @@
 import pygame
 from constants import *
 from ui.colors import *
-from classes.binaryTree import BinaryTree
-from classes.sideWinder import SideWinder
-from classes.aldousBroder import AldousBroder
-from classes.huntandkill import HuntAndKill
 from classes.recursiveBacktracker import RecursiveBacktracker
-from classes.wilson import Wilson
 from classes.grid import Grid
 from classes.mask import Mask, GridMask
 import cv2
@@ -18,7 +13,6 @@ clock = pygame.time.Clock()
 fps = 30
 
 image = cv2.imread("./images/polygon.png")
-# print(image)
 
 show_text = False
 color_mode = False
@@ -34,8 +28,8 @@ for i in range(rows):
 maskGrid = GridMask(rows, cols, cell_size, mask)
 maskGrid.PrepareGrid()
 
-
 recursive_backtracker = RecursiveBacktracker(maskGrid, "PURPLE_E")
+recursive_backtracker.starting_node = maskGrid.cells[cols//2][rows//2]
 recursive_backtracker.starting_node.isStartingNode = True
 recursive_backtracker.end_node = maskGrid.cells[cols//2][0]
 recursive_backtracker.end_node.isgoalNode = True

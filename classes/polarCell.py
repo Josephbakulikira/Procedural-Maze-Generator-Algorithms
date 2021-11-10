@@ -1,21 +1,22 @@
 from classes.cell import Cell
 
 class PolarCell(Cell):
-	clockWise = None
-	counterClockWise = None
+	clockwise = None
+	c_clockwise = None
 	inward = None
-	def __init__(self, x, y, cell_size):
-		super().__init__(x, y, cell_size)
-		outward = []
 
-	def UpdateNeighbours(self):
-		neighbours = []
-		if clockWise:
-			neighbours.append(clockWise)
-		if counterClockWise:
-			neighbours.append(counterClockWise)
-		if inward:
-			neighbours.append(inward)
-		neighbours = neighbours + self.outward
+	def __init__(self, x, y, size):
+		super().__init__(x, y, size)
+		self.outward = []
+		self.neighbours = []
 
-
+	def GetNeighbours(self):
+		self.neighbours = []
+		if self.clockwise:
+			self.neighbours.append(self.clockwise)
+		if self.c_clockwise:
+			self.neighbours.append(self.c_clockwise)
+		if self.inward:
+			self.neighbours.append(self.inward)
+		self.neighbours += self.outward
+		return self.neighbours

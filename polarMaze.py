@@ -1,26 +1,25 @@
 import pygame
 from constants import *
 from ui.colors import *
-from classes.binaryTree import BinaryTree
-from classes.sideWinder import SideWinder
-from classes.aldousBroder import AldousBroder
-from classes.huntandkill import HuntAndKill
 from classes.recursiveBacktracker import RecursiveBacktracker
-from classes.wilson import Wilson
-from classes.grid import Grid
+from classes.polarGrid import PolarGrid
 # Initialize pygame
 pygame.init()
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 30
 
-binary_tree = BinaryTree(Grid(rows, cols, cell_size), "HSV")
-wilson = Wilson(Grid(rows, cols, cell_size), "PURPLE_E")
-side_winder = SideWinder(Grid(rows, cols, cell_size), "BLUE")
-hunt_and_kill = HuntAndKill(Grid(rows, cols, cell_size), "RED")
-aldous_broder = AldousBroder(Grid(rows, cols, cell_size), "GREEN")
 
-recursive_backtracker = RecursiveBacktracker(Grid(rows, cols, cell_size), "BLUE")
+
+
+polarGrid = PolarGrid(8, 1, 50)
+polarGrid.cells = polarGrid.PrepareGrid()
+polarGrid.ConfigureCells()
+recursive_backtracker = RecursiveBacktracker(polarGrid, "PURPLE")
+recursive_backtracker.starting_node = polarGrid.cells[0][0]
+recursive_backtracker.starting_node.isStartingNode = True
+recursive_backtracker.end_node = polarGrid.cells[1][0]
+recursive_backtracker.end_node.isgoalNode = True
 
 
 show_text = False
@@ -29,7 +28,7 @@ show_path = False
 
 run = True
 while run:
-    # screen.fill(white)
+    screen.fill(white)
 
     # Set Caption and fps
     clock.tick(fps)
@@ -50,11 +49,8 @@ while run:
             elif event.key == pygame.K_s:
                 show_path = not show_path
 
-    # wilson.Generate(screen, show_text, color_mode, show_path)
-    # binary_tree.Generate(screen, show_text, color_mode, show_path)
-    # side_winder.Generate(screen, show_text, color_mode, show_path)
-    # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
-    # aldous_broder.Generate(screen, show_text, color_mode, show_path)
     recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
+    # polarGrid.Show(screen, show_text, color_mode, show_path)
+    # pygame.display.flip()
 
 pygame.quit()

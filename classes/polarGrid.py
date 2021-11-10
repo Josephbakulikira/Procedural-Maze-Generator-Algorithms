@@ -1,55 +1,89 @@
 import pygame
-from ui.colors import *
-from constants import *
-from classes.polarCell import PolarCell 
+import random
 from classes.grid import Grid
+from classes.polarCell import PolarCell
+from ui.colors import *
+from constants import width ,height
 import math
 
-def PolarGrid(Grid):
-	def __init__(self, rows, cols=1, cellSize=cell_size):
-		super().__init__(self, rows, cols, cellSize)
-		self.cells = [[PolarCell(x, y, cell_size) for y in range(rows)] for x in range(cols)]
-		self.row_cells = []
+class PolarGrid(Grid):
+	def __init__(self, rows, cols, cell_size):
+		super().__init__(rows, cols, cell_size)
 
 	def PrepareGrid(self):
-		row_cells = [None for i in range(self.rows)]
-		r_height = 1.0/self.rows
-		initial_cell = PolarCell(0, 0)
-		row_cells[0] = [initial_cell]
-		
-		for i in range(1, self.rows):
-			radius = i / self.rows
-			circumference = 2 * math.pi * radius
+		rows = [None for i in range(self.rows)]
+		row_height = 1/self.rows
 
-			previous_count = len(row_cells[i - 1])
-			estimated_cell_width = circumference / previous_count
-			ratio = (estimated_cell_width / r_height).round
+		rows[0] = [PolarCell(0, 0, self.cell_size)]
 
-			cells = previous_count * ratio
-			row_cells[i] = [ PolarCell(i, j) for j in range(cells)]
+		for i in range(self.rows):
+			if i > 0:
+				radius = i / self.rows
+				circumference = (2 * math.pi) * radius
 
+				previous_count = len(rows[i-1])
+				estimated_cell_width = circumference / previous_count
+				ratio = math.floor(estimated_cell_width / row_height)
 
-		return row_cells
+				cells = previous_count * ratio
+				rows[i] = [PolarCell(i, j, self.cell_size) for j in range(cells)]
+
+		return rows
 
 	def ConfigureCells(self):
-		if len(self.row_cells):
-			for x in range(len(self.row_cells)):
-				for y in range(len(self.row_cells[x])):
-					current = self.row_cells[x][y]
-					r, c = current.x, current.y
-					if r > 0:
-						current.clockWise = self.row_cells[r][c+1]
-						current.counterClockWise = self.row_cells[r][c-1]
+		for i in range(len(self.cells)):
+			for j in range(len(self.cells[i])):
+				current = self.cells[i][j]
+				x, y = current.x, current.y
 
-						ratio = len(self.row_cells[r]) / len(self.row_cells[r-1])
-						parent = self.row_cells[r-1][c/ratio]
-						parent.outward.append(current)
-						current.inward = parent
+				if x > 0:
+					if y+1 < len(self.cells[x]):
+						current.clockwise = self.cells[x][ y + 1]
+					current.c_clockwise = self.cells[x][y]
 
-	
+					ratio = len(self.cells[x]) // len(self.cells[x-1])
+					parent = self.cells[x-1][y//ratio]
 
+					parent.outward.append(current)
+					current.inward = parent
+	def GetRandomCell(self):
+		x = random.randint(0, len(self.cells)-1)
+		y = 0
+		if len(self.cells[x]) > 1:
+			y = random.randint(0, len(self.cells[x])-1)
 
+		return self.cells[x][y]
 
+	def Show(self, screen, show_heuristic=None, show_color_map=None, shortest_path = None):
+		centerX = width//2
+		centerY = height//2
+		for x in range(len(self.cells)):
+			for y in range(len(self.cells[x])):
+				cell = self.cells[x][y]
+				if x > 0:
+					theta = (2 * math.pi) / len(self.cells[cell.x])
 
+					inner_radius = cell.x * self.cell_size
+					outer_radius = (cell.x + 1) * self.cell_size
 
+					theta_counter_clockwise = cell.y * theta
+					theta_clockwise = (cell.y + 1) * theta
 
+					ax = centerX + (inner_radius * math.sin(theta_counter_clockwise))
+					ay = centerY + (inner_radius * math.cos(theta_counter_clockwise))
+
+					bx = centerX + (outer_radius * math.sin(theta_counter_clockwise))
+					by = centerY + (outer_radius * math.cos(theta_counter_clockwise))
+
+					cx = centerX + (inner_radius * math.sin(theta_clockwise))
+					cy = centerY + (inner_radius * math.cos(theta_clockwise))
+
+					dx = centerX + (outer_radius * math.sin(theta_clockwise))
+					dy = centerY + (outer_radius * math.cos(theta_clockwise))
+					# pygame.draw.line(screen, black, (ax, ay), (cx, cy), 2)
+					# pygame.draw.line(screen, black, (cx, cy), (dx, dy), 2)
+					if not cell.inward:
+						pygame.draw.line(screen, black, (ax, ay), (cx, cy), 3)
+					if not cell.clockwise:
+						pygame.draw.line(screen, black, (cx, cy), (dx, dy), 3)
+			pygame.draw.circle(screen, black, (centerX, centerY), self.rows * self.cell_size, 3)
