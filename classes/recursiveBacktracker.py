@@ -59,9 +59,10 @@ class RecursiveBacktracker:
                     stack.append(neighbour)
 
             self.isDone = True
-            Update(self, screen, show_heuristic, show_color_map, show_path)
+            if type(self.grid) != PolarGrid:
+                Update(self, screen, show_heuristic, show_color_map, show_path)
 
-        if show_path:
+        if show_path and type(self.grid) != PolarGrid:
             self.grid.Show(screen, show_heuristic, show_color_map,self.shortest_path)
         else:
             self.grid.Show(screen, show_heuristic, show_color_map, None)

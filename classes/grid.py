@@ -12,6 +12,7 @@ class Grid:
         self.heuristics = None
         self.path_color = orange
 
+
     def Flatten(self):
         flat_grid = []
         for x in range(self.cols):
