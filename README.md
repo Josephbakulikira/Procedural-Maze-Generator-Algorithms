@@ -1,3 +1,3 @@
 # Procedural-Maze-Generator-Algorithms
 
-Not finished
+Polar Maze is not finished
