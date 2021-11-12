@@ -12,13 +12,13 @@ fps = 30
 
 
 
-polarGrid = PolarGrid(8, 1, 50)
+polarGrid = PolarGrid(8, 1, cell_size)
 polarGrid.cells = polarGrid.PrepareGrid()
 polarGrid.ConfigureCells()
 recursive_backtracker = RecursiveBacktracker(polarGrid, "PURPLE")
 recursive_backtracker.starting_node = polarGrid.cells[0][0]
 recursive_backtracker.starting_node.isStartingNode = True
-recursive_backtracker.end_node = polarGrid.cells[1][0]
+recursive_backtracker.end_node = polarGrid.cells[0][0]
 recursive_backtracker.end_node.isgoalNode = True
 
 

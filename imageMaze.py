@@ -26,7 +26,7 @@ for i in range(rows):
             mask.boolGrid[i][j] = False
 
 maskGrid = GridMask(rows, cols, cell_size, mask)
-maskGrid.PrepareGrid()
+maskGrid.UpdateGrid()
 
 recursive_backtracker = RecursiveBacktracker(maskGrid, "PURPLE_E")
 recursive_backtracker.starting_node = maskGrid.cells[cols//2][rows//2]

@@ -41,7 +41,8 @@ class RecursiveBacktracker:
                 current = stack[-1]
                 neighbours = []
                 if type(self.grid) == PolarGrid:
-                    neighbours = [cell for cell in current.GetNeighbours() if len(cell.connections) == 0]
+                    current.neightbours = current.GetNeighbours()
+                    neighbours = [cell for cell in current.neighbours if len(cell.connections) == 0]
                 else:
                     neighbours = [cell for cell in current.neighbours if len(cell.connections) == 0]
 

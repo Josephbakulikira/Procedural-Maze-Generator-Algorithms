@@ -23,7 +23,7 @@ class PolarGrid(Grid):
 
 				previous_count = len(rows[i-1])
 				estimated_cell_width = circumference / previous_count
-				ratio = math.floor(estimated_cell_width / row_height)
+				ratio = int(estimated_cell_width / row_height)
 
 				cells = previous_count * ratio
 				rows[i] = [PolarCell(i, j, self.cell_size) for j in range(cells)]
@@ -36,23 +36,24 @@ class PolarGrid(Grid):
 				current = self.cells[i][j]
 				x, y = current.x, current.y
 				if x > 0:
-					index = (y+1)%(len(self.cells[x]))
-					if index < len(self.cells[x]):
-						current.clockwise = self.cells[x][index]
+					_index = y+1
+					if _index < len(self.cells[x]):
+						current.clockwise = self.cells[x][_index]
+					_index = y-1
+					if _index >= 0:
+						current.c_clockwise = self.cells[x][_index]
 
-					current.c_clockwise = self.cells[x][y]
-
-					ratio = len(self.cells[x]) // len(self.cells[x-1])
-					parent = self.cells[x-1][y//ratio]
+					ratio = len(self.cells[x]) / len(self.cells[x-1])
+					parent = self.cells[x-1][int(y/ratio)]
 
 					parent.outward.append(current)
 					current.inward = parent
+
 	def GetRandomCell(self):
-		x = random.randint(0, self.rows-1)
+		x = random.randint(0, len(self.cells)-1)
 		y = 0
-		if len(self.cells[x]) > 1:
-			print("here")
-			y = random.randint(0, len(self.cells[x])+4)
+		if len(self.cells[x]) > 0:
+			y = random.randint(0, len(self.cells[x])-1)
 
 		return self.cells[x][y]
 
@@ -84,9 +85,9 @@ class PolarGrid(Grid):
 					dy = centerY + (outer_radius * math.sin(theta_clockwise))
 					# pygame.draw.line(screen, black, (ax, ay), (cx, cy), 2)
 					# pygame.draw.line(screen, black, (cx, cy), (dx, dy), 2)
-					if not cell.inward :
+					if cell.inward :
 						pygame.draw.line(screen, black, (ax, ay), (cx, cy), 3)
-					if not cell.clockwise :
+					if cell.clockwise :
 						pygame.draw.line(screen, black, (cx, cy), (dx, dy), 3)
 					# if x == len(self.cells)-1 and len(cell.outward) == 0:
 					# 	pygame.draw.line(screen, black, (bx, by), (dx, dy), 3)

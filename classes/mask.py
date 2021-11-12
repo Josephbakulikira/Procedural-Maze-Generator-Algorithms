@@ -28,14 +28,14 @@ class GridMask(Grid):
     def __init__(self, rows, cols, cell_size, mask):
         super().__init__(rows, cols, cell_size)
         self.mask = mask
-        
-    def PrepareGrid(self):
+
+    def UpdateGrid(self):
         for x in range(self.cols):
             for y in range(self.rows):
                 if self.mask.boolGrid[x][y] == False:
                     self.cells[x][y] = None
 
-        self.UpdateNeighbours()
+        self.PrepareGrid()
 
     def GetRandomCell(self):
         x , y = self.mask.Random()

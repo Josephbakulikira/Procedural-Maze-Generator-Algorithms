@@ -8,7 +8,7 @@ class Grid:
         self.cell_size = cell_size
         # Initialize cells
         self.cells = [[Cell(x, y, cell_size) for y in range(rows)] for x in range(cols)]
-        self.UpdateNeighbours()
+        self.PrepareGrid()
         self.heuristics = None
         self.path_color = orange
         self.isSorted = False
@@ -23,7 +23,7 @@ class Grid:
                     flat_grid.append(self.cells[x][y])
         return flat_grid
 
-    def UpdateNeighbours(self):
+    def PrepareGrid(self):
         for x in range(self.cols):
             for y in range(self.rows):
                 if self.cells[x][y]:
@@ -61,22 +61,21 @@ class Grid:
             elif A.West == B:
                 A.West, B.East = None, None
             # ---- Polar Grid -------
-            elif A.inward == B:
+            elif A.inward == B :
                 A.inward = None
                 B.outward.remove(A)
-            elif B in A.outward:
+            elif B.inward == A:
                 B.inward = None
                 A.outward.remove(B)
-            elif A.clockwise == B:
+            elif A.clockwise == B or B.c_clockwise == A:
                 A.clockwise =  None
                 B.c_clockwise = None
-            elif A.c_clockwise == B:
+            elif A.c_clockwise == B or B.clockwise == A:
                 A.c_clockwise = None
                 B.clockwise = None
 
 
     def Show(self, screen, show_heuristic, show_color_map, shortest_path = None):
-
         if not self.isSorted and shortest_path:
             for x in range(self.cols):
                 for y in range(self.rows):
