@@ -1,4 +1,5 @@
 import pygame
+import time
 from classes.grid import Grid, Update
 from classes.mask import Mask, GridMask
 from classes.polarGrid import PolarGrid
@@ -51,12 +52,12 @@ class RecursiveBacktracker:
                 else:
                     neighbour = random.choice(neighbours)
                     Grid.JoinAndDestroyWalls(current, neighbour)
-                    neighbour.isCurrent = True
 
+                    neighbour.isCurrent = True
                     self.grid.Show(screen, show_heuristic, show_color_map)
                     pygame.display.flip()
-
                     neighbour.isCurrent = False
+
                     stack.append(neighbour)
 
             self.isDone = True

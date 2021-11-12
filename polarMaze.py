@@ -9,9 +9,6 @@ screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 30
 
-
-
-
 polarGrid = PolarGrid(8, 1, cell_size)
 polarGrid.cells = polarGrid.PrepareGrid()
 polarGrid.ConfigureCells()
@@ -21,7 +18,6 @@ recursive_backtracker.starting_node.isStartingNode = True
 recursive_backtracker.end_node = polarGrid.cells[0][0]
 recursive_backtracker.end_node.isgoalNode = True
 
-
 show_text = False
 color_mode = False
 show_path = False
@@ -29,7 +25,6 @@ show_path = False
 run = True
 while run:
     screen.fill(white)
-
     # Set Caption and fps
     clock.tick(fps)
     frame_rate = int(clock.get_fps())
@@ -50,7 +45,6 @@ while run:
                 show_path = not show_path
 
     recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
-    # polarGrid.Show(screen, show_text, color_mode, show_path)
-    # pygame.display.flip()
+
 
 pygame.quit()

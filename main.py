@@ -8,6 +8,7 @@ from classes.huntandkill import HuntAndKill
 from classes.recursiveBacktracker import RecursiveBacktracker
 from classes.wilson import Wilson
 from classes.grid import Grid
+
 # Initialize pygame
 pygame.init()
 screen = pygame.display.set_mode(size)
@@ -19,9 +20,7 @@ wilson = Wilson(Grid(rows, cols, cell_size), "PURPLE_E")
 side_winder = SideWinder(Grid(rows, cols, cell_size), "BLUE")
 hunt_and_kill = HuntAndKill(Grid(rows, cols, cell_size), "RED")
 aldous_broder = AldousBroder(Grid(rows, cols, cell_size), "GREEN")
-
 recursive_backtracker = RecursiveBacktracker(Grid(rows, cols, cell_size), "BLUE")
-
 
 show_text = False
 color_mode = False

@@ -13,7 +13,6 @@ class PolarGrid(Grid):
 	def PrepareGrid(self):
 		rows = [None for i in range(self.rows)]
 		row_height = 1/self.rows
-
 		rows[0] = [PolarCell(0, 0, self.cell_size)]
 
 		for i in range(self.rows):
@@ -83,12 +82,8 @@ class PolarGrid(Grid):
 
 					dx = centerX + (outer_radius * math.cos(theta_clockwise))
 					dy = centerY + (outer_radius * math.sin(theta_clockwise))
-					# pygame.draw.line(screen, black, (ax, ay), (cx, cy), 2)
-					# pygame.draw.line(screen, black, (cx, cy), (dx, dy), 2)
 					if cell.inward :
 						pygame.draw.line(screen, black, (ax, ay), (cx, cy), 3)
 					if cell.clockwise :
 						pygame.draw.line(screen, black, (cx, cy), (dx, dy), 3)
-					# if x == len(self.cells)-1 and len(cell.outward) == 0:
-					# 	pygame.draw.line(screen, black, (bx, by), (dx, dy), 3)
 			pygame.draw.circle(screen, black, (centerX, centerY), self.rows * self.cell_size, 3)
