@@ -35,7 +35,7 @@ class PolarGrid(Grid):
 				current = self.cells[i][j]
 				x, y = current.x, current.y
 				if x > 0:
-					_index = y+1
+					_index = (y+1) % (len(self.cells[x]))
 					if _index < len(self.cells[x]):
 						current.clockwise = self.cells[x][_index]
 					_index = y-1
@@ -83,7 +83,7 @@ class PolarGrid(Grid):
 					dx = centerX + (outer_radius * math.cos(theta_clockwise))
 					dy = centerY + (outer_radius * math.sin(theta_clockwise))
 					if cell.inward :
-						pygame.draw.line(screen, black, (ax, ay), (cx, cy), 3)
+						pygame.draw.line(screen, white, (ax, ay), (cx, cy), 3)
 					if cell.clockwise :
-						pygame.draw.line(screen, black, (cx, cy), (dx, dy), 3)
-			pygame.draw.circle(screen, black, (centerX, centerY), self.rows * self.cell_size, 3)
+						pygame.draw.line(screen, white, (cx, cy), (dx, dy), 3)
+			pygame.draw.circle(screen, white, (centerX, centerY), self.rows * self.cell_size, 3)

@@ -24,7 +24,7 @@ show_path = False
 
 run = True
 while run:
-    screen.fill(white)
+    screen.fill(black)
     # Set Caption and fps
     clock.tick(fps)
     frame_rate = int(clock.get_fps())
@@ -45,6 +45,7 @@ while run:
                 show_path = not show_path
 
     recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
-
+    # polarGrid.Show(screen, show_text, color_mode, show_path)
+    # pygame.display.flip()
 
 pygame.quit()
