@@ -35,10 +35,11 @@ class PolarGrid(Grid):
 			for j in range(len(self.cells[i])):
 				current = self.cells[i][j]
 				x, y = current.x, current.y
-
 				if x > 0:
-					if y+1 < len(self.cells[x]):
-						current.clockwise = self.cells[x][ y + 1]
+					index = (y+1)%(len(self.cells[x]))
+					if index < len(self.cells[x]):
+						current.clockwise = self.cells[x][index]
+
 					current.c_clockwise = self.cells[x][y]
 
 					ratio = len(self.cells[x]) // len(self.cells[x-1])
@@ -47,10 +48,11 @@ class PolarGrid(Grid):
 					parent.outward.append(current)
 					current.inward = parent
 	def GetRandomCell(self):
-		x = random.randint(0, len(self.cells)-1)
+		x = random.randint(0, self.rows-1)
 		y = 0
 		if len(self.cells[x]) > 1:
-			y = random.randint(0, len(self.cells[x])-1)
+			print("here")
+			y = random.randint(0, len(self.cells[x])+4)
 
 		return self.cells[x][y]
 
@@ -69,21 +71,23 @@ class PolarGrid(Grid):
 					theta_counter_clockwise = cell.y * theta
 					theta_clockwise = (cell.y + 1) * theta
 
-					ax = centerX + (inner_radius * math.sin(theta_counter_clockwise))
-					ay = centerY + (inner_radius * math.cos(theta_counter_clockwise))
+					ax = centerX + (inner_radius * math.cos(theta_counter_clockwise))
+					ay = centerY + (inner_radius * math.sin(theta_counter_clockwise))
 
-					bx = centerX + (outer_radius * math.sin(theta_counter_clockwise))
-					by = centerY + (outer_radius * math.cos(theta_counter_clockwise))
+					bx = centerX + (outer_radius * math.cos(theta_counter_clockwise))
+					by = centerY + (outer_radius * math.sin(theta_counter_clockwise))
 
-					cx = centerX + (inner_radius * math.sin(theta_clockwise))
-					cy = centerY + (inner_radius * math.cos(theta_clockwise))
+					cx = centerX + (inner_radius * math.cos(theta_clockwise))
+					cy = centerY + (inner_radius * math.sin(theta_clockwise))
 
-					dx = centerX + (outer_radius * math.sin(theta_clockwise))
-					dy = centerY + (outer_radius * math.cos(theta_clockwise))
+					dx = centerX + (outer_radius * math.cos(theta_clockwise))
+					dy = centerY + (outer_radius * math.sin(theta_clockwise))
 					# pygame.draw.line(screen, black, (ax, ay), (cx, cy), 2)
 					# pygame.draw.line(screen, black, (cx, cy), (dx, dy), 2)
-					if not cell.inward:
+					if not cell.inward :
 						pygame.draw.line(screen, black, (ax, ay), (cx, cy), 3)
-					if not cell.clockwise:
+					if not cell.clockwise :
 						pygame.draw.line(screen, black, (cx, cy), (dx, dy), 3)
+					# if x == len(self.cells)-1 and len(cell.outward) == 0:
+					# 	pygame.draw.line(screen, black, (bx, by), (dx, dy), 3)
 			pygame.draw.circle(screen, black, (centerX, centerY), self.rows * self.cell_size, 3)

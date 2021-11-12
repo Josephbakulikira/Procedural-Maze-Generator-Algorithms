@@ -67,5 +67,3 @@ class RecursiveBacktracker:
         else:
             self.grid.Show(screen, show_heuristic, show_color_map, None)
         pygame.display.flip()
-        self.grid.Show(screen, show_heuristic, show_color_map, None)
-        pygame.display.flip()

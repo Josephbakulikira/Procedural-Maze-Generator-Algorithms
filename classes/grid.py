@@ -11,7 +11,9 @@ class Grid:
         self.UpdateNeighbours()
         self.heuristics = None
         self.path_color = orange
-
+        self.isSorted = False
+        self.path = {}
+        self.path_values = []
 
     def Flatten(self):
         flat_grid = []
@@ -61,27 +63,41 @@ class Grid:
             # ---- Polar Grid -------
             elif A.inward == B:
                 A.inward = None
+                B.outward.remove(A)
             elif B in A.outward:
                 B.inward = None
+                A.outward.remove(B)
             elif A.clockwise == B:
-                A.clockwise, B.c_clockwise = None, None
+                A.clockwise =  None
+                B.c_clockwise = None
             elif A.c_clockwise == B:
                 A.c_clockwise = None
                 B.clockwise = None
 
 
-
     def Show(self, screen, show_heuristic, show_color_map, shortest_path = None):
+
+        if not self.isSorted and shortest_path:
+            for x in range(self.cols):
+                for y in range(self.rows):
+                    if shortest_path.cells_record[x][y]:
+                        val = shortest_path.cells_record[x][y]
+                        self.path_values.append(val)
+                        self.path[str(val)] = ((x+0.5)*self.cell_size, (y+0.5)*self.cell_size)
+            self.path_values = sorted(self.path_values)
+            self.isSorted = True
+
         for x in range(self.cols):
             for y in range(self.rows):
                 if self.cells[x][y]:
                     self.cells[x][y].show_text = show_heuristic
                     self.cells[x][y].show_highlight = show_color_map
                     self.cells[x][y].Draw(screen, self.rows, self.cols)
-                    if shortest_path != None:
-                        if shortest_path.cells_record[x][y] != None:
-                            A = ((x + 0.5) * self.cell_size, (y+0.5) * self.cell_size)
-                            pygame.draw.circle(screen, self.path_color, A, self.cell_size//6)
+
+        if shortest_path:
+            for i in range(len(self.path_values)-1):
+                pygame.draw.line(screen, orange, self.path[str(self.path_values[i])], self.path[str(self.path_values[i+1])], 2)
+                pygame.draw.circle(screen, orange, self.path[str(self.path_values[i])], self.cell_size//6)
 
 def Update(self, screen, show_heuristic, show_color_map, show_path):
     # Calculate the step of each cell from the starting node

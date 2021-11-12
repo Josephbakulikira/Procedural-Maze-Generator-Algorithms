@@ -1,12 +1,11 @@
 from classes.cell import Cell
 
 class PolarCell(Cell):
-	clockwise = None
-	c_clockwise = None
-	inward = None
-
 	def __init__(self, x, y, size):
 		super().__init__(x, y, size)
+		self.clockwise = None
+		self.c_clockwise = None
+		self.inward = None
 		self.outward = []
 		self.neighbours = []
 
@@ -19,4 +18,5 @@ class PolarCell(Cell):
 		if self.inward:
 			self.neighbours.append(self.inward)
 		self.neighbours += self.outward
+
 		return self.neighbours
