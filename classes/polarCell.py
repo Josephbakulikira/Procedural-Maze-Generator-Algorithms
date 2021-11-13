@@ -9,7 +9,7 @@ class PolarCell(Cell):
 		self.outward = []
 		self.neighbours = []
 
-	def GetNeighbours(self):
+	def SetNeighbours(self):
 		self.neighbours = []
 		if self.clockwise:
 			self.neighbours.append(self.clockwise)

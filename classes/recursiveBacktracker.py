@@ -3,6 +3,7 @@ import time
 from classes.grid import Grid, Update
 from classes.mask import Mask, GridMask
 from classes.polarGrid import PolarGrid
+from classes.hexGrid import HexGrid
 from ui.colors import *
 import random
 
@@ -27,22 +28,31 @@ class RecursiveBacktracker:
 
     def Generate(self, screen, show_heuristic, show_color_map, show_path):
         if not self.isDone:
+            gridtype = "Normal"
             stack = []
             initial_cell = None
             if type(self.grid) == Grid:
                 randomX = random.randint(0, self.cols-1)
                 randomY = random.randint(0, self.rows-1)
                 initial_cell = self.grid.cells[randomX][randomY]
-            else:
+            elif type(self.grid) == PolarGrid:
+                gridtype = "Polar"
                 initial_cell = self.grid.GetRandomCell()
+            elif type(self.grid) == GridMask:
+                initial_cell = self.grid.GetRandomCell()
+            elif type(self.grid) == HexGrid:
+                gridtype = "Hex"
+                randomX = random.randint(0, self.cols-1)
+                randomY = random.randint(0, self.rows-1)
+                initial_cell = self.grid.cells[randomX][randomY]
 
             stack.append(initial_cell)
 
             while len(stack) > 0:
                 current = stack[-1]
                 neighbours = []
-                if type(self.grid) == PolarGrid:
-                    current.neightbours = current.GetNeighbours()
+                if type(self.grid) == PolarGrid or type(self.grid) == HexGrid:
+                    current.SetNeighbours()
                     neighbours = [cell for cell in current.neighbours if len(cell.connections) == 0]
                 else:
                     neighbours = [cell for cell in current.neighbours if len(cell.connections) == 0]
@@ -51,7 +61,7 @@ class RecursiveBacktracker:
                     stack.pop()
                 else:
                     neighbour = random.choice(neighbours)
-                    Grid.JoinAndDestroyWalls(current, neighbour)
+                    Grid.JoinAndDestroyWalls(current, neighbour, gridtype)
 
                     neighbour.isCurrent = True
                     self.grid.Show(screen, show_heuristic, show_color_map)

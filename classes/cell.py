@@ -80,7 +80,7 @@ class Cell:
 
             if self.show_highlight:
                 pygame.draw.rect(screen, self.highlight, [x, y, self.size-offset, self.size-offset])
-
+                
         if self.North != None or self.y - 1 < 0:
             A = (x, y)
             B = (x + self.size, y)

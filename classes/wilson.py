@@ -40,7 +40,7 @@ class Wilson:
                     for i in range(len(path)-1):
                         path[i+1].isCurrent = True
 
-                        Grid.JoinAndDestroyWalls(path[i], path[i+1])
+                        Grid.JoinAndDestroyWalls(path[i], path[i+1], "Normal")
                         unvisited.remove(path[i])
 
                         self.grid.Show(screen, show_heuristic, show_color_map)
