@@ -3,18 +3,19 @@ from constants import *
 from ui.colors import *
 from classes.recursiveBacktracker import RecursiveBacktracker
 from classes.hexGrid import HexGrid
+
 # Initialize pygame
 pygame.init()
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 30
 
-hexGrid = HexGrid(10, 10, cell_size)
+hexGrid = HexGrid(13, 11, cell_size)
 # hexGrid.PrepareGrid()
 hexGrid.ConfigureCells()
 recursive_backtracker = RecursiveBacktracker(hexGrid, "RED")
 recursive_backtracker.starting_node = hexGrid.cells[0][0]
-recursive_backtracker.end_node = hexGrid.cells[9][9]
+recursive_backtracker.end_node = hexGrid.cells[10][12]
 recursive_backtracker.starting_node.isStartingNode = True
 recursive_backtracker.end_node.isgoalNode = True
 
@@ -24,7 +25,7 @@ show_path = False
 
 run = True
 while run:
-    screen.fill(white)
+    screen.fill(black)
     # Set Caption and fps
     clock.tick(fps)
     frame_rate = int(clock.get_fps())

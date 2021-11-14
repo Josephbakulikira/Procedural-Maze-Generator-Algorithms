@@ -1,6 +1,7 @@
 from classes.cell import *
 from ui.colors import *
 from classes.color import GridColor
+
 class Grid:
     def __init__(self, rows, cols, cell_size):
         self.rows = rows
@@ -90,8 +91,6 @@ class Grid:
                     A.NorthEast, B.SouthWest = None, None
                 elif A.NorthWest == B:
                     A.NorthWest, B.SouthEast = None, None
-                
-
 
     def Show(self, screen, show_heuristic, show_color_map, shortest_path = None):
         if not self.isSorted and shortest_path:
