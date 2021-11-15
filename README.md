@@ -19,7 +19,9 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
  - run ***imageMaze.py***     for maskGrid maze
  - run ***weightedMaze.py***  for weightedGrid maze
 
-
+ you can also ***braid*** your mazes when it done , by calling the function Braid on the grid.
+ ***braiding a maze*** simply assures that the maze doens't have any deadends
+ 
 ## colors modes
 Mode 1 : <img src="images/colormode1.png" width="200">
 Mode 2 : <img src="images/colormode2.png" width="200">
