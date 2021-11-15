@@ -45,6 +45,7 @@ maskGrid : <img src="images/maskmaze.png" width="250">
 - the recursive backtracker class need a little bit of cleaning
 - add Comments
 - implement the ui interface
+- the djikistra algorithm need to take the weights of cells in consideration for weightedGrid
 ## mazes
 ---
 ```python:main.py
