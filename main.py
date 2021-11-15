@@ -15,7 +15,7 @@ screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 30
 
-binary_tree = BinaryTree(Grid(rows, cols, cell_size), "HSV")
+binary_tree = BinaryTree(Grid(rows, cols, cell_size), "GREEN")
 wilson = Wilson(Grid(rows, cols, cell_size), "PURPLE_E")
 side_winder = SideWinder(Grid(rows, cols, cell_size), "BLUE")
 hunt_and_kill = HuntAndKill(Grid(rows, cols, cell_size), "RED")
@@ -50,10 +50,10 @@ while run:
                 show_path = not show_path
 
     # wilson.Generate(screen, show_text, color_mode, show_path)
-    # binary_tree.Generate(screen, show_text, color_mode, show_path)
+    binary_tree.Generate(screen, show_text, color_mode, show_path)
     # side_winder.Generate(screen, show_text, color_mode, show_path)
     # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
     # aldous_broder.Generate(screen, show_text, color_mode, show_path)
-    recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
+    # recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
 
 pygame.quit()

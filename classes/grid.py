@@ -1,6 +1,7 @@
 from classes.cell import *
 from ui.colors import *
 from classes.color import GridColor
+import random
 
 class Grid:
     def __init__(self, rows, cols, cell_size):
@@ -91,6 +92,33 @@ class Grid:
                     A.NorthEast, B.SouthWest = None, None
                 elif A.NorthWest == B:
                     A.NorthWest, B.SouthEast = None, None
+
+    def Deadends(self):
+        deadends_set = []
+        for x in range(len(self.cells)):
+            for y in range(len(self.cells[x])):
+                if len(self.cells[x][y].connections) == 1:
+                    deadends_set.append(self.cells[x][y])
+        return deadends_set
+
+    def Braid(self, p=1):
+        deadends = self.Deadends()
+        random.shuffle(deadends)
+
+        for cell in deadends:
+            if len(cell.connections) != 1 or random.uniform(0, 1) > p:
+                continue
+            neighbours = [c for c in cell.neighbours if c not in cell.connections]
+            best = []
+            for c in neighbours:
+                if len(c.connections ) == 1:
+                    best.append(c)
+            if len(best) == 0:
+                best = neighbours
+
+            neighbour = random.choice(best)
+            Grid.JoinAndDestroyWalls(cell, neighbour)
+
 
     def Show(self, screen, show_heuristic, show_color_map, shortest_path = None):
         if not self.isSorted and shortest_path:
