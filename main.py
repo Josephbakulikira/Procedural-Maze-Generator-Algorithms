@@ -65,7 +65,7 @@ while run:
     if start:
         # wilson.Generate(screen, show_text, color_mode, show_path)
         # binary_tree.Generate(screen, show_text, color_mode, show_path)
-        # kruskal.Generate(screen, show_text, color_mode, show_path)
+        kruskal.Generate(screen, show_text, color_mode, show_path)
         # side_winder.Generate(screen, show_text, color_mode, show_path)
         # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
         # aldous_broder.Generate(screen, show_text, color_mode, show_path)
@@ -73,10 +73,11 @@ while run:
         # simplePrims.Generate(screen, show_text, color_mode, show_path)
         # prims.Generate(screen, show_text, color_mode, show_path)
         # growingTree.Generate(screen, show_text, color_mode, show_path)
-        ellers.Generate(screen, show_text, color_mode, show_path)
+        # ellers.Generate(screen, show_text, color_mode, show_path)
     else:
         PressEnter.Render(screen)
 
     pygame.display.flip()
 
+pygame.image.save(screen, "./images/yourMaze.png")
 pygame.quit()
