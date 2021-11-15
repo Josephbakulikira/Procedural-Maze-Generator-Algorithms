@@ -25,9 +25,9 @@ Mode 2 : <img src="images/colormode2.png" width="200">
 
 ---
 ## other Maze Grid:
-Polar Grid : <img src="images/polarmaze.png" width="300">
-HexGrid : <img src="images/hexmaze.png" width="300">
-maskGrid : <img src="images/maskmaze.png" width="300">
+Polar Grid : <img src="images/polarmaze.png" width="200">
+HexGrid : <img src="images/hexmaze.png" width="200">
+maskGrid : <img src="images/maskmaze.png" width="200">
 ---
 
 ## mazes
