@@ -25,15 +25,25 @@ Mode 2 : <img src="images/colormode2.png" width="200">
 
 ## mazes
 - Aldous Broder <img src="images/aldousBroderMaze.png" width="500">
+ 
 - Binary Tree <img src="images/binarytreeMaze.png" width="500">
+
 - Eller's Algorithm <img src="images/ellersMaze.png" width="500">
+
 - Growing Tree <img src="images/growingtreeMaze.png" width="500">
+
 - Hunt And kill <img src="images/huntandkillMaze.png" width="500">
+
 - Kruskal's algorithm <img src="images/kruskalMaze.png" width="500">
+
 - Prims Algorithm <img src="images/primsMaze.png" width="500">
-- Simplified Prims <img src="images/simpleprimesMaze.png" width="500">
+
+- Simplified Prims <img src="images/simplePrimesMaze.png" width="500">
+
 - Wilson algorithm <img src="images/wilsonMaze.png" width="500">
+
 - Sidewinder Algorithm <img src="images/sidewinderMaze.png" width="500">
+
 - Recursive Backtracker <img src="images/recursiveBacktracker.png" width="500">
 
 
