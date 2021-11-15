@@ -14,5 +14,10 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
 - `Space` to switch between the color modes
 
 ---
-
-
+## files
+ - run ***main.py***          for grid mazes
+ - run ***polarMaze.py***     for polarGrid maze
+ - run ***hexMaze.py***       for hexGrid maze
+ - run ***imageMaze.py***     for maskGrid maze
+ - run ***weightedMaze.py***  for weightedGrid maze
+---
