@@ -23,6 +23,13 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
 Mode 1 : <img src="images/colormode1.png" width="200">
 Mode 2 : <img src="images/colormode2.png" width="200">
 
+---
+## other Maze Grid:
+Polar Grid : <img src="images/polarmaze.png" width="300">
+HexGrid : <img src="images/hexmaze.png" width="300">
+maskGrid : <img src="images/maskmaze.png" width="300">
+---
+
 ## mazes
 - Aldous Broder <img src="images/aldousBroderMaze.png" width="500">
  
