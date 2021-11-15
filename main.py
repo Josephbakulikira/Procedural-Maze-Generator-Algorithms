@@ -11,7 +11,7 @@ from classes.wilson import Wilson
 from classes.prims import SimplePrims, Prims
 from classes.grid import Grid
 from classes.growingTree import GrowingTree
-
+from classes.ellers import Ellers
 # Initialize pygame
 pygame.init()
 screen = pygame.display.set_mode(size)
@@ -28,6 +28,7 @@ kruskal = Kruskals(Kruskals.State(Grid(rows, cols, cell_size)))
 simplePrims = SimplePrims(Grid(rows, cols, cell_size), "CYAN")
 prims = Prims(Grid(rows, cols, cell_size))
 growingTree = GrowingTree(Grid(rows, cols, cell_size), "GREEN")
+ellers = Ellers(Grid(rows, cols, cell_size), 0, "RED")
 
 show_text = False
 color_mode = False
@@ -65,6 +66,7 @@ while run:
     # recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
     # simplePrims.Generate(screen, show_text, color_mode, show_path)
     # prims.Generate(screen, show_text, color_mode, show_path)
-    growingTree.Generate(screen, show_text, color_mode, show_path)
+    # growingTree.Generate(screen, show_text, color_mode, show_path)
+    ellers.Generate(screen, show_text, color_mode, show_path)
 
 pygame.quit()

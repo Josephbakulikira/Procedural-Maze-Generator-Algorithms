@@ -1,4 +1,4 @@
-width, height = 800, 800
+width, height = 1000, 800
 size = (width, height)
 
 cell_size = 40

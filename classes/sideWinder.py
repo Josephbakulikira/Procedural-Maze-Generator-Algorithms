@@ -3,6 +3,7 @@ from classes.grid import Grid, Update
 from ui.colors import *
 import random
 import time
+from ui.colors import *
 
 class SideWinder:
     def __init__(self, grid, path_color="RED"):
@@ -24,8 +25,10 @@ class SideWinder:
         if not self.isDone:
             for y in range(self.grid.rows):
                 history = []
+
                 for x in range(self.grid.cols):
                     current = self.grid.cells[x][y]
+                    
                     current.isCurrent = True
                     history.append(current)
 
