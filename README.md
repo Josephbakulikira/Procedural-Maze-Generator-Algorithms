@@ -24,17 +24,17 @@ Mode 1 : <img src="images/colormode1.png" width="200">
 Mode 2 : <img src="images/colormode2.png" width="200">
 
 ## mazes
-<img src="images/aldousBroderMaze.png" width="500">
-<img src="images/binarytreeMaze.png" width="500">
-<img src="images/ellersMaze.png" width="500">
-<img src="images/growingtreeMaze.png" width="500">
-<img src="images/huntandkillMaze.png" width="500">
-<img src="images/kruskalMaze.png" width="500">
-<img src="images/primsMaze.png" width="500">
-<img src="images/simpleprimesMaze.png" width="500">
-<img src="images/wilsonMaze.png" width="500">
-<img src="images/sindewinderMaze.png" width="500">
-<img src="images/recursivebacktracker.png" width="500">
+- Aldous Broder <img src="images/aldousBroderMaze.png" width="500">
+- Binary Tree <img src="images/binarytreeMaze.png" width="500">
+- Eller's Algorithm <img src="images/ellersMaze.png" width="500">
+- Growing Tree <img src="images/growingtreeMaze.png" width="500">
+- Hunt And kill <img src="images/huntandkillMaze.png" width="500">
+- Kruskal's algorithm <img src="images/kruskalMaze.png" width="500">
+- Prims Algorithm <img src="images/primsMaze.png" width="500">
+- Simplified Prims <img src="images/simpleprimesMaze.png" width="500">
+- Wilson algorithm <img src="images/wilsonMaze.png" width="500">
+- Sidewinder Algorithm <img src="images/sidewinderMaze.png" width="500">
+- Recursive Backtracker <img src="images/recursiveBacktracker.png" width="500">
 
 
 
