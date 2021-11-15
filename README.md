@@ -5,7 +5,6 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
 ### Requirements
 > ***PYGAME*** : pip install pygame
 
----
 ### Commands Controls:
 - `Esc`   to close the program
 - `Enter` to start to genrate the maze
@@ -19,4 +18,8 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
  - run ***hexMaze.py***       for hexGrid maze
  - run ***imageMaze.py***     for maskGrid maze
  - run ***weightedMaze.py***  for weightedGrid maze
----
+
+## colors modes
+![](images/colormode1.png)
+![](images/colormode2.png)
+
