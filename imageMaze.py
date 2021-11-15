@@ -60,4 +60,5 @@ while run:
     recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
 
 
+pygame.image.save(screen, "./images/maskmaze.png")
 pygame.quit()

@@ -63,7 +63,6 @@ class RecursiveBacktracker:
                 else:
                     neighbour = random.choice(neighbours)
                     Grid.JoinAndDestroyWalls(current, neighbour, gridtype)
-
                     neighbour.isCurrent = True
                     self.grid.Show(screen, show_heuristic, show_color_map)
                     pygame.display.flip()
@@ -74,9 +73,11 @@ class RecursiveBacktracker:
             self.isDone = True
             if type(self.grid) != PolarGrid:
                 Update(self, screen, show_heuristic, show_color_map, show_path)
-
-        if show_path and type(self.grid) != PolarGrid:
-            self.grid.Show(screen, show_heuristic, show_color_map,self.shortest_path)
+        if type(self.grid) != PolarGrid:
+            if show_path:
+                self.grid.Show(screen, show_heuristic, show_color_map,self.shortest_path)
+            else:
+                self.grid.Show(screen, show_heuristic, show_color_map, None)
         else:
             self.grid.Show(screen, show_heuristic, show_color_map, None)
-        
+            pygame.display.flip()

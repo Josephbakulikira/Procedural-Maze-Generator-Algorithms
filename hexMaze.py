@@ -49,4 +49,5 @@ while run:
     # hexGrid.Show(screen, show_text, color_mode, show_path)
     # pygame.display.flip()
 
+pygame.image.save(screen, "./images/hexmaze.png")
 pygame.quit()
