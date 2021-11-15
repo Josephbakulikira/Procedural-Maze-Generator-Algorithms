@@ -30,7 +30,7 @@ HexGrid : <img src="images/hexmaze.png" width="250">
 maskGrid : <img src="images/maskmaze.png" width="250">
 ---
 ## Show heuristic and path
-- heuristic  : <img src="images/heuristic.png" width="300">
+- heuristic  : <img src="images/heuristics.png" width="300">
 - showPath : <img src="images/path.png" width="300">
 ---
 ## mazes
