@@ -20,6 +20,7 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
  - run ***weightedMaze.py***  for weightedGrid maze
 
 ## colors modes
+<img src="https://github.com/favicon.ico" width="48">
 ![](images/colormode1.png)
 ![](images/colormode2.png)
 
