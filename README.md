@@ -20,8 +20,10 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
  - run ***weightedMaze.py***  for weightedGrid maze
 
 ## colors modes
+Mode 1 : <img src="images/colormode1.png" width="200">
+Mode 2 : <img src="images/colormode2.png" width="200">
+---
+## mazes
 <img src="images/colormode1.png" width="200">
-<img src="images/colormode1.png" width="200">
-
 
 
