@@ -19,7 +19,7 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
  - run ***imageMaze.py***     for maskGrid maze
  - run ***weightedMaze.py***  for weightedGrid maze
 
- you can also ***braid*** your mazes when it done , by calling the function `grid.Braid()`.
+ > you can also ***braid*** your mazes when it done , by calling the function `grid.Braid()`.
  ***braiding a maze*** simply assures that the maze doens't have any deadends
  
 ## colors modes
