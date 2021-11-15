@@ -10,6 +10,7 @@ from classes.kruskal import Kruskals
 from classes.wilson import Wilson
 from classes.prims import SimplePrims, Prims
 from classes.grid import Grid
+from classes.growingTree import GrowingTree
 
 # Initialize pygame
 pygame.init()
@@ -26,6 +27,7 @@ recursive_backtracker = RecursiveBacktracker(Grid(rows, cols, cell_size), "BLUE"
 kruskal = Kruskals(Kruskals.State(Grid(rows, cols, cell_size)))
 simplePrims = SimplePrims(Grid(rows, cols, cell_size), "CYAN")
 prims = Prims(Grid(rows, cols, cell_size))
+growingTree = GrowingTree(Grid(rows, cols, cell_size), "GREEN")
 
 show_text = False
 color_mode = False
@@ -61,6 +63,8 @@ while run:
     # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
     # aldous_broder.Generate(screen, show_text, color_mode, show_path)
     # recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
-    simplePrims.Generate(screen, show_text, color_mode, show_path)
+    # simplePrims.Generate(screen, show_text, color_mode, show_path)
     # prims.Generate(screen, show_text, color_mode, show_path)
+    growingTree.Generate(screen, show_text, color_mode, show_path)
+
 pygame.quit()
