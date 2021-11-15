@@ -8,6 +8,7 @@ from classes.huntandkill import HuntAndKill
 from classes.recursiveBacktracker import RecursiveBacktracker
 from classes.kruskal import Kruskals
 from classes.wilson import Wilson
+from classes.prims import SimplePrims, Prims
 from classes.grid import Grid
 
 # Initialize pygame
@@ -23,6 +24,8 @@ hunt_and_kill = HuntAndKill(Grid(rows, cols, cell_size), "RED")
 aldous_broder = AldousBroder(Grid(rows, cols, cell_size), "GREEN")
 recursive_backtracker = RecursiveBacktracker(Grid(rows, cols, cell_size), "BLUE")
 kruskal = Kruskals(Kruskals.State(Grid(rows, cols, cell_size)))
+simplePrims = SimplePrims(Grid(rows, cols, cell_size), "CYAN")
+prims = Prims(Grid(rows, cols, cell_size))
 
 show_text = False
 color_mode = False
@@ -53,10 +56,11 @@ while run:
 
     # wilson.Generate(screen, show_text, color_mode, show_path)
     # binary_tree.Generate(screen, show_text, color_mode, show_path)
-    kruskal.Generate(screen, show_text, color_mode, show_path)
+    # kruskal.Generate(screen, show_text, color_mode, show_path)
     # side_winder.Generate(screen, show_text, color_mode, show_path)
     # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
     # aldous_broder.Generate(screen, show_text, color_mode, show_path)
     # recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
-
+    simplePrims.Generate(screen, show_text, color_mode, show_path)
+    # prims.Generate(screen, show_text, color_mode, show_path)
 pygame.quit()
