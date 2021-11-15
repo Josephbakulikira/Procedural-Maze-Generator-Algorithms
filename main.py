@@ -34,8 +34,7 @@ ellers = Ellers(Grid(rows, cols, cell_size), 0, "RED")
 show_text = False
 color_mode = False
 show_path = False
-rightMouseClicked = False
-showUI = False
+start = False
 run = True
 while run:
     #screen.fill(black)
@@ -52,7 +51,7 @@ while run:
             if event.key == pygame.K_ESCAPE:
                 run = False
             if event.key == pygame.K_RETURN:
-                showUI = not showUI
+                start = not start
             elif event.key == pygame.K_h:
                 show_text = not show_text
             elif event.key == pygame.K_SPACE:
@@ -62,18 +61,21 @@ while run:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
                 rightMouseClicked = True
-    # wilson.Generate(screen, show_text, color_mode, show_path)
-    # binary_tree.Generate(screen, show_text, color_mode, show_path)
-    # kruskal.Generate(screen, show_text, color_mode, show_path)
-    # side_winder.Generate(screen, show_text, color_mode, show_path)
-    # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
-    # aldous_broder.Generate(screen, show_text, color_mode, show_path)
-    # recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
-    # simplePrims.Generate(screen, show_text, color_mode, show_path)
-    # prims.Generate(screen, show_text, color_mode, show_path)
-    # growingTree.Generate(screen, show_text, color_mode, show_path)
-    ellers.Generate(screen, show_text, color_mode, show_path)
 
+    if start:
+        # wilson.Generate(screen, show_text, color_mode, show_path)
+        # binary_tree.Generate(screen, show_text, color_mode, show_path)
+        # kruskal.Generate(screen, show_text, color_mode, show_path)
+        # side_winder.Generate(screen, show_text, color_mode, show_path)
+        # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
+        # aldous_broder.Generate(screen, show_text, color_mode, show_path)
+        # recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
+        # simplePrims.Generate(screen, show_text, color_mode, show_path)
+        # prims.Generate(screen, show_text, color_mode, show_path)
+        # growingTree.Generate(screen, show_text, color_mode, show_path)
+        ellers.Generate(screen, show_text, color_mode, show_path)
+    else:
+        PressEnter.Render(screen)
 
     pygame.display.flip()
 
