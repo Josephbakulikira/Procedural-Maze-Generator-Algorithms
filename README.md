@@ -19,6 +19,7 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
  - run ***imageMaze.py***     for maskGrid maze
  - run ***weightedMaze.py***  for weightedGrid maze
 
+
 ## colors modes
 Mode 1 : <img src="images/colormode1.png" width="200">
 Mode 2 : <img src="images/colormode2.png" width="200">
@@ -40,6 +41,36 @@ maskGrid : <img src="images/maskmaze.png" width="250">
 - add Comments
 
 ## mazes
+---
+```python:main.py
+initialize:
+ binary_tree = BinaryTree(Grid(rows, cols, cell_size), "GREEN")
+ wilson = Wilson(Grid(rows, cols, cell_size), "PURPLE_E")
+ side_winder = SideWinder(Grid(rows, cols, cell_size), "BLUE")
+ hunt_and_kill = HuntAndKill(Grid(rows, cols, cell_size), "RED")
+ aldous_broder = AldousBroder(Grid(rows, cols, cell_size), "GREEN")
+ recursive_backtracker = RecursiveBacktracker(Grid(rows, cols, cell_size), "BLUE")
+ kruskal = Kruskals(Kruskals.State(Grid(rows, cols, cell_size)))
+ simplePrims = SimplePrims(Grid(rows, cols, cell_size), "CYAN")
+ prims = Prims(Grid(rows, cols, cell_size))
+ growingTree = GrowingTree(Grid(rows, cols, cell_size), "GREEN")
+ ellers = Ellers(Grid(rows, cols, cell_size), 0, "RED")
+mainloop():
+ wilson.Generate(screen, show_text, color_mode, show_path)
+ binary_tree.Generate(screen, show_text, color_mode, show_path)
+ kruskal.Generate(screen, show_text, color_mode, show_path)
+ side_winder.Generate(screen, show_text, color_mode, show_path)
+ hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
+ aldous_broder.Generate(screen, show_text, color_mode, show_path)
+ recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
+ simplePrims.Generate(screen, show_text, color_mode, show_path)
+ prims.Generate(screen, show_text, color_mode, show_path)
+ growingTree.Generate(screen, show_text, color_mode, show_path)
+ ellers.Generate(screen, show_text, color_mode, show_path)
+
+```
+---
+
 - Aldous Broder <img src="images/aldousBroderMaze.png" width="500">
  
 - Binary Tree <img src="images/binarytreeMaze.png" width="500">
