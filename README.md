@@ -39,7 +39,7 @@ maskGrid : <img src="images/maskmaze.png" width="250">
 - the the imagemaze.py file need to be refactored for it to be able to work on every size of images , for now it's only working for images wich has the same size with the screen size
 - the recursive backtracker class need a little bit of cleaning
 - add Comments
-
+- implement the ui interface
 ## mazes
 ---
 ```python:main.py
