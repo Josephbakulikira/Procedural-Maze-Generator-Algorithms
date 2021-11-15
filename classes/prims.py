@@ -51,7 +51,7 @@ class SimplePrims:
             self.grid.Show(screen, show_heuristic, show_color_map, self.shortest_path)
         else:
             self.grid.Show(screen, show_heuristic, show_color_map)
-        pygame.display.flip()
+
 
 class Prims(SimplePrims):
     def __init__(self, grid, path_color="RED"):
@@ -104,4 +104,4 @@ class Prims(SimplePrims):
             self.grid.Show(screen, show_heuristic, show_color_map, self.shortest_path)
         else:
             self.grid.Show(screen, show_heuristic, show_color_map)
-        pygame.display.flip()
+        

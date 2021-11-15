@@ -45,11 +45,11 @@ class BinaryTree:
 
             self.isDone = True
             # self.grid.Braid(0.5)
-            
+
             Update(self, screen, show_heuristic, show_color_map, show_path)
 
         if show_path:
             self.grid.Show(screen, show_heuristic, show_color_map, self.shortest_path)
         else:
             self.grid.Show(screen, show_heuristic, show_color_map)
-        pygame.display.flip()
+        

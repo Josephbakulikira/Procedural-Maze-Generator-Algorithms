@@ -28,7 +28,7 @@ class SideWinder:
 
                 for x in range(self.grid.cols):
                     current = self.grid.cells[x][y]
-                    
+
                     current.isCurrent = True
                     history.append(current)
 
@@ -62,4 +62,4 @@ class SideWinder:
             self.grid.Show(screen, show_heuristic, show_color_map,self.shortest_path)
         else:
             self.grid.Show(screen, show_heuristic, show_color_map, None)
-        pygame.display.flip()
+        

@@ -45,4 +45,4 @@ class AldousBroder:
             self.grid.Show(screen, show_heuristic, show_color_map,self.shortest_path)
         else:
             self.grid.Show(screen, show_heuristic, show_color_map, None)
-        pygame.display.flip()
+        

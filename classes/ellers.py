@@ -51,14 +51,15 @@ class Ellers:
                         random.shuffle(cells)
                         for _index, _cell in enumerate(cells):
                             if _index == 0 or random.randint(0,2) == 0:
-                                temp = _cell.South
-                                temp.isCurrent = True
-                                Grid.JoinAndDestroyWalls(_cell, temp)
-                                self.grid.Show(screen, show_heuristic, show_color_map)
-                                pygame.display.flip()
-                                temp.isCurrent = False
+                                if _cell.South:
+                                    temp = _cell.South
+                                    temp.isCurrent = True
+                                    Grid.JoinAndDestroyWalls(_cell, temp)
+                                    self.grid.Show(screen, show_heuristic, show_color_map)
+                                    pygame.display.flip()
+                                    temp.isCurrent = False
 
-                                next_row.Record(row_state.SetFor(_cell), temp)
+                                    next_row.Record(row_state.SetFor(_cell), temp)
                     row_state = next_row
             self.isDone = True
             Update(self, screen, show_heuristic, show_color_map, show_path)

@@ -12,6 +12,7 @@ from classes.prims import SimplePrims, Prims
 from classes.grid import Grid
 from classes.growingTree import GrowingTree
 from classes.ellers import Ellers
+from ui.setup import *
 # Initialize pygame
 pygame.init()
 screen = pygame.display.set_mode(size)
@@ -33,11 +34,11 @@ ellers = Ellers(Grid(rows, cols, cell_size), 0, "RED")
 show_text = False
 color_mode = False
 show_path = False
-
+rightMouseClicked = False
+showUI = False
 run = True
 while run:
-    # screen.fill(white)
-
+    #screen.fill(black)
     # Set Caption and fps
     clock.tick(fps)
     frame_rate = int(clock.get_fps())
@@ -50,13 +51,17 @@ while run:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 run = False
+            if event.key == pygame.K_RETURN:
+                showUI = not showUI
             elif event.key == pygame.K_h:
                 show_text = not show_text
             elif event.key == pygame.K_SPACE:
                 color_mode = not color_mode
             elif event.key == pygame.K_s:
                 show_path = not show_path
-
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                rightMouseClicked = True
     # wilson.Generate(screen, show_text, color_mode, show_path)
     # binary_tree.Generate(screen, show_text, color_mode, show_path)
     # kruskal.Generate(screen, show_text, color_mode, show_path)
@@ -68,5 +73,8 @@ while run:
     # prims.Generate(screen, show_text, color_mode, show_path)
     # growingTree.Generate(screen, show_text, color_mode, show_path)
     ellers.Generate(screen, show_text, color_mode, show_path)
+
+
+    pygame.display.flip()
 
 pygame.quit()
