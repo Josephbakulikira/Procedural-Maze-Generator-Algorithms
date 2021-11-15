@@ -3,6 +3,7 @@ import time
 from classes.grid import Grid, Update
 from classes.mask import Mask, GridMask
 from classes.polarGrid import PolarGrid
+from classes.weightedGrid import WeightedGrid
 from classes.hexGrid import HexGrid
 from ui.colors import *
 import random
@@ -31,7 +32,7 @@ class RecursiveBacktracker:
             gridtype = "Normal"
             stack = []
             initial_cell = None
-            if type(self.grid) == Grid:
+            if type(self.grid) == Grid or type(self.grid) == WeightedGrid:
                 randomX = random.randint(0, self.cols-1)
                 randomY = random.randint(0, self.rows-1)
                 initial_cell = self.grid.cells[randomX][randomY]

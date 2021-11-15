@@ -6,6 +6,7 @@ from classes.sideWinder import SideWinder
 from classes.aldousBroder import AldousBroder
 from classes.huntandkill import HuntAndKill
 from classes.recursiveBacktracker import RecursiveBacktracker
+from classes.kruskal import Kruskals
 from classes.wilson import Wilson
 from classes.grid import Grid
 
@@ -21,6 +22,7 @@ side_winder = SideWinder(Grid(rows, cols, cell_size), "BLUE")
 hunt_and_kill = HuntAndKill(Grid(rows, cols, cell_size), "RED")
 aldous_broder = AldousBroder(Grid(rows, cols, cell_size), "GREEN")
 recursive_backtracker = RecursiveBacktracker(Grid(rows, cols, cell_size), "BLUE")
+kruskal = Kruskals(Kruskals.State(Grid(rows, cols, cell_size)))
 
 show_text = False
 color_mode = False
@@ -50,7 +52,8 @@ while run:
                 show_path = not show_path
 
     # wilson.Generate(screen, show_text, color_mode, show_path)
-    binary_tree.Generate(screen, show_text, color_mode, show_path)
+    # binary_tree.Generate(screen, show_text, color_mode, show_path)
+    kruskal.Generate(screen, show_text, color_mode, show_path)
     # side_winder.Generate(screen, show_text, color_mode, show_path)
     # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
     # aldous_broder.Generate(screen, show_text, color_mode, show_path)
