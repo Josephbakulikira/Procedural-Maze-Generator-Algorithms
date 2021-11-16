@@ -83,7 +83,7 @@ class PolarGrid(Grid):
 					dx = centerX + (outer_radius * math.cos(theta_clockwise))
 					dy = centerY + (outer_radius * math.sin(theta_clockwise))
 					if cell.inward :
-						pygame.draw.line(screen, white, (ax, ay), (cx, cy), 3)
+						pygame.draw.line(screen, white, (ax, ay), (cx, cy), 5)
 					if cell.clockwise :
-						pygame.draw.line(screen, white, (cx, cy), (dx, dy), 3)
-			pygame.draw.circle(screen, white, (centerX, centerY), self.rows * self.cell_size, 3)
+						pygame.draw.line(screen, white, (cx, cy), (dx, dy), 5)
+			pygame.draw.circle(screen, white, (centerX, centerY), self.rows * self.cell_size, 5)
