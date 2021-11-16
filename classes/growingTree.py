@@ -2,6 +2,15 @@ import pygame
 import random
 from classes.grid import Grid, Update
 
+"""
+STEPS:
+
+1. Let C be a list of cells, initially empty. Add one cell to C, at random.
+2. Choose a cell from C, and carve a passage to any unvisited neighbor of that cell, 
+adding that neighbor to C as well. If there are no unvisited neighbors, remove the cell from C.
+3. Repeat #2 until C is empty.
+"""
+
 class GrowingTree:
     def __init__(self, grid, path_color="BLUE"):
         self.grid = grid

@@ -2,6 +2,16 @@ import pygame
 from classes.grid import Grid, Update
 import random
 
+"""
+STEPS:
+
+1. Throw all of the edges in the graph into a big burlap sack.
+2. Pull out the edge with the lowest weight. If the edge connects two disjoint trees, 
+join the trees. Otherwise, throw that edge away.
+3. Repeat until there are no more edges left.
+
+"""
+
 class Kruskals:
     def __init__(self, state, path_color='BLUE'):
         self.state = state

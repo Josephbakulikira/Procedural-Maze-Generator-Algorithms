@@ -46,7 +46,7 @@ while run:
 
     recursive_backtracker.Generate(screen, show_text, color_mode, show_path)
     # polarGrid.Show(screen, show_text, color_mode, show_path)
-    # pygame.display.flip()
+    pygame.display.flip()
 
 pygame.image.save(screen, "./images/polarmaze.png")
 pygame.quit()

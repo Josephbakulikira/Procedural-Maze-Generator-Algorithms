@@ -2,6 +2,18 @@ import pygame
 from classes.grid import Grid, Update
 import random
 
+"""
+STEPS:
+
+1. Choose an arbitrary cell from G (the grid), 
+   and add it to some (initially empty) set V.
+2. Choose the edge with the smallest weight from G, 
+   that connects a vertex in V with another cell not in V.
+3. Add that edge to the minimal spanning tree, and the edge’s other cell to V.
+4. Repeat steps 2 and 3 until V includes every vertex in G.
+
+"""
+
 class SimplePrims:
     def __init__(self, grid, path_color="BLUE"):
         self.grid = grid

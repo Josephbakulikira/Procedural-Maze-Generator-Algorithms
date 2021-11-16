@@ -1,8 +1,18 @@
 import pygame
 from classes.grid import Grid, Update
-
 from ui.colors import *
 import random
+
+
+"""
+STEPS:
+
+1. Choose any vertex at random and add it to the UST.
+2. Select any vertex that is not already in the UST 
+   and perform a random walk until you encounter a vertex that is in the UST.
+3. Add the vertices and edges touched in the random walk to the UST.
+4. Repeat 2 and 3 until all vertices have been added to the UST.
+"""
 
 class Wilson:
     def __init__(self, grid, path_color="BLUE_E"):

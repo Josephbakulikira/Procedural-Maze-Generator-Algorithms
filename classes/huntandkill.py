@@ -3,6 +3,17 @@ import random
 from classes.grid import Grid, Update
 from ui.colors import *
 
+"""
+STEPS:
+
+1. Choose a starting cell.
+2. Perform a random walk, carving passages to unvisited neighbors, 
+   until the current cell has no unvisited neighbors.
+3. Enter “hunt” mode, where you scan the grid looking for an unvisited cell that is adjacent to a visited cell. 
+   If found, carve a passage between the two and let the formerly unvisited cell be the new starting cell.
+4. Repeat steps 2 and 3 until the hunt mode scans the entire grid and finds no unvisited cells.
+"""
+
 class HuntAndKill:
     def __init__(self, grid, path_color):
         self.grid = grid

@@ -3,6 +3,15 @@ import random
 from classes.grid import Grid, Update
 from ui.colors import *
 
+"""
+STEPS:
+
+1. Choose a Cell. Any cell.
+2. Choose a connected neighbor of the cell and travel to it. 
+    If the neighbor has not yet been visited, 
+    add the traveled edge to the spanning tree.
+3. Repeat step 2 until all vertexes have been visited.
+"""
 class AldousBroder:
     def __init__(self, grid, path_color="YELLOW"):
         self.grid = grid

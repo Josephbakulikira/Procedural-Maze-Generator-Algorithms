@@ -3,6 +3,15 @@ from classes.grid import Grid, Update
 from ui.colors import *
 import random
 
+"""
+STEPS:
+
+This has to be the simplest 
+This is how it works:
+- for every cell in the grid, randomly carve a passage either north, or west.
+That's it
+"""
+
 class BinaryTree:
     def __init__(self, grid, path_color="BLUE"):
         self.grid = grid
