@@ -26,13 +26,18 @@ Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
  ***braiding a maze*** simply assures that the maze doens't have any deadends
  
 ## colors modes
-Mode 1 : <img src="images/colormode1.png" width="200">
-Mode 2 : <img src="images/colormode2.png" width="200">
+Mode 1 : 
+<img src="images/colormode1.png" width="200">
+Mode 2 : 
+<img src="images/colormode2.png" width="200">
 
 ## other Maze Grid:
-Polar Grid : <img src="images/polarmaze.png" width="250">
-HexGrid : <img src="images/hexmaze.png" width="250">
-maskGrid : <img src="images/maskmaze.png" width="250">
+Polar Grid : 
+<img src="images/polarmaze.png" width="250">
+HexGrid : 
+<img src="images/hexmaze.png" width="250">
+maskGrid : 
+<img src="images/maskmaze.png" width="250">
 
 ## Show heuristic and path
 - heuristic  : <img src="images/heuristics.png" width="300">
