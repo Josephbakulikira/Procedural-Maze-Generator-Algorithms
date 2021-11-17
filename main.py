@@ -54,9 +54,9 @@ while run:
                 rightMouseClicked = True
 
     if start:
-        wilson.Generate(screen, show_text, color_mode, show_path)
+        # wilson.Generate(screen, show_text, color_mode, show_path)
         # binary_tree.Generate(screen, show_text, color_mode, show_path)
-        # kruskal.Generate(screen, show_text, color_mode, show_path)
+        kruskal.Generate(screen, show_text, color_mode, show_path)
         # side_winder.Generate(screen, show_text, color_mode, show_path)
         # hunt_and_kill.Generate(screen, show_text, color_mode, show_path)
         # aldous_broder.Generate(screen, show_text, color_mode, show_path)
