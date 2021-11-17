@@ -2,7 +2,7 @@
 
 Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
 
-### Documentations
+### Ressources
  - Thanks to Jamis Buck Book : [Mazes for programmers](https://www.amazon.in/gp/product/B013HA1UY4/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=auctux-21&creative=24630&linkCode=as2&creativeASIN=B013HA1UY4&linkId=cd1ab49c7f656324511f624fefe1ecda)
 
 ### Requirements
