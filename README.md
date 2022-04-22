@@ -1,4 +1,4 @@
-# Procedural-Maze-Generator-Algorithms
+# Procedural-Maze-Generator-Algorithms and Maze solver
 
 Check out my youtube channel : [Auctux](https://www.youtube.com/c/Auctux)
 
